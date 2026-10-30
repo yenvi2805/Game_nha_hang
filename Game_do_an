@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đồ Án Giữa Kỳ - Game Quản Lý Nhà Hàng Nấu Ăn</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #74b9ff, #a29bfe); margin: 0; padding: 15px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .game-card { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); max-width: 450px; width: 100%; text-align: center; }
+        h1 { color: #d63031; margin: 0 0 5px 0; font-size: 22px; }
+        .subtitle { font-size: 12px; color: #636e72; margin-bottom: 15px; }
+        .stats { display: flex; justify-content: space-around; background: #f1f2f6; padding: 12px; border-radius: 12px; font-weight: bold; margin-bottom: 15px; font-size: 14px; }
+        .order-box { background: #ffeaa7; border: 2px dashed #fdcb6e; padding: 15px; border-radius: 15px; margin-bottom: 15px; }
+        .timer-container { width: 100%; background: #dfe6e9; height: 10px; border-radius: 5px; margin-top: 10px; overflow: hidden; }
+        .timer-bar { height: 100%; background: #00b894; width: 100%; transition: width 0.1s linear, background-color 0.3s; }
+        .kitchen-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 15px; }
+        .btn-dish { color: white; border: none; padding: 16px; font-size: 15px; font-weight: bold; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); active: transform 0.98; }
+        .btn-serve { background: #00b894; color: white; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 12px; width: 100%; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        .audio-btn { background: #6c5ce7; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-size: 11px; margin-bottom: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="game-card">
+        <h1>🍳 Siêu Đầu Bếp Bán Hàng</h1>
+        <div class="subtitle">Đồ án Giữa kỳ - Game Quản lý Nấu ăn (Càng chơi càng khó)</div>
+        
+        <button class="audio-btn" onclick="toggleAudio()">🔊 Nhạc nền: BẬT/TẮT</button>
+
+        <div class="stats">
+            <div>Điểm: <span id="score" style="color:#0984e3;">0</span></div>
+            <div>Level: <span id="level" style="color:#d63031;">1</span></div>
+            <div>Mạng: <span id="lives">❤️❤️❤️</span></div>
+        </div>
+
+        <div class="order-box">
+            <div style="font-size: 12px; color: #d63031; font-weight: bold;">KHÁCH ĐANG ĐẶT MÓN:</div>
+            <div id="customer-order" style="font-size: 22px; font-weight: bold; margin: 8px 0; color: #2d3436;">Đang tải...</div>
+            <div class="timer-container">
+                <div class="timer-bar" id="timer-bar"></div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 12px; font-weight: bold; font-size: 14px;">Món bạn chuẩn bị: <span id="current-selection" style="color: #6c5
